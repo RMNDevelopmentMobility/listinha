@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
-
-import '../../main.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'themes/themes.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,13 +8,15 @@ class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    Modular.setInitialRoute('/home/');
+    return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const MyHomePage(title: 'LISTINHA'),
+      routerDelegate: Modular.routerDelegate,
+      routeInformationParser: Modular.routeInformationParser,
     );
   }
 }

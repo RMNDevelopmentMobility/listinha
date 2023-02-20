@@ -2,24 +2,42 @@ import 'package:flutter/material.dart';
 
 part 'color_schemes.g.dart';
 
-final lightTheme = ThemeData(
-  useMaterial3: true,
-  colorScheme: _lightColorScheme,
-  appBarTheme: AppBarTheme(
-    centerTitle: true,
-    backgroundColor: _lightColorScheme.primaryContainer,
-  ),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: _lightColorScheme.primary,
-    foregroundColor: Colors.white,
-  ),
-);
+ThemeData get lightTheme => ThemeData(
+      useMaterial3: true,
+      colorScheme: _lightColorScheme,
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        backgroundColor: _lightColorScheme.primaryContainer,
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: _lightColorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+      segmentedButtonTheme: _segmentedButtonThemeData,
+    );
 
-final darkTheme = ThemeData(
-  useMaterial3: true,
-  colorScheme: _darkColorScheme,
-  appBarTheme: AppBarTheme(
-    centerTitle: true,
-    backgroundColor: _darkColorScheme.primaryContainer,
-  ),
-);
+ThemeData get darkTheme => ThemeData(
+      useMaterial3: true,
+      colorScheme: _darkColorScheme,
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        backgroundColor: _darkColorScheme.primaryContainer,
+      ),
+      segmentedButtonTheme: _segmentedButtonThemeData,
+    );
+
+SegmentedButtonThemeData get _segmentedButtonThemeData =>
+    SegmentedButtonThemeData(
+      style: ButtonStyle(
+        textStyle: MaterialStateProperty.resolveWith<TextStyle?>((states) {
+          if (states.contains(MaterialState.selected)) {
+            return const TextStyle(
+              fontSize: 9,
+            );
+          }
+          return const TextStyle(
+            fontSize: 12,
+          );
+        }),
+      ),
+    );
