@@ -66,8 +66,9 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text('Apagar cache e reiniciar o app')),
+                onPressed: () {},
+                child: const Text('Apagar cache e reiniciar o app'),
+              ),
             ),
           ],
         ),
